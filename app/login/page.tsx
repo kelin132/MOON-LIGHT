@@ -1,4 +1,9 @@
 'use client';
+import { redirect } from 'next/navigation';
+
+export default function RootPage() {
+  redirect('/profile');
+}
 
 import { useState, Suspense } from 'react';
 import { signIn } from 'next-auth/react';
