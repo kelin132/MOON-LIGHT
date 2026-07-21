@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.moonId || !credentials?.password) return null;
 
         await dbConnect();
-        const user = await User.findOne({ moonId: credentials.moonId }).lean();
+        const user: any = await User.findOne({ moonId: credentials.moonId }).lean();
 
         // No account, or account was never given website access
         // (webPassword null means the bot hasn't granted a web login yet).
