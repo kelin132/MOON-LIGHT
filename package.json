@@ -1,19 +1,31 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
-  },
+  "name": "moonlight-haven",
+  "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "@replit/connectors-sdk": "^0.4.1"
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "next-auth": "4.24.7",
+    "mongoose": "8.5.1",
+    "bcryptjs": "2.4.3",
+    "framer-motion": "11.3.19",
+    "clsx": "2.1.1"
   },
   "devDependencies": {
-    "prettier": "^3.9.5",
-    "typescript": "~5.9.3"
+    "typescript": "5.5.4",
+    "@types/node": "20.14.15",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@types/bcryptjs": "2.4.6",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.41",
+    "tailwindcss": "3.4.7"
   }
 }

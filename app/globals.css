@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background-color: #0A0A12;
+  color: #F5F3FF;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 124, 246, 0.4) transparent;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb {
+  background: rgba(139, 124, 246, 0.4);
+  border-radius: 999px;
+}
+
+/* Respect reduced-motion preferences site-wide */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface/60 backdrop-blur-xl border border-border shadow-glass;
+  }
+  .glass-card {
+    @apply glass bg-card-sheen rounded-2xl;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-moonviolet focus-visible:ring-offset-2 focus-visible:ring-offset-void;
+  }
+}
