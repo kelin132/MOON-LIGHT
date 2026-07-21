@@ -9,7 +9,7 @@ export async function getCurrentSession() {
 }
 
 /** Full Mongo user document for the signed-in account, or null. */
-export async function getCurrentUser() {
+export async function getCurrentUser(): Promise<any> {
   const session = await getCurrentSession();
   if (!session?.user?.moonId) return null;
   await dbConnect();
