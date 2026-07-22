@@ -2,24 +2,36 @@ import Image from 'next/image';
 import GlassCard from './GlassCard';
 
 export default function GuildPreviewCard({ guild }: { guild: any }) {
+  const image = guild.icon || guild.thumbnailUrl;
+
   return (
     <GlassCard className="!p-0 overflow-hidden flex flex-col">
       <div className="relative h-32 w-full bg-surface2">
-        {guild.thumbnailUrl ? (
-          <Image src={guild.thumbnailUrl} alt="" fill className="object-cover" unoptimized />
+        {image ? (
+          <Image
+            src={image}
+            alt={guild.name}
+            fill
+            className="object-cover"
+            unoptimized
+          />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-moonviolet/25 to-void" />
         )}
       </div>
+
       <div className="p-5 flex-1 flex flex-col">
         <h3 className="font-display text-lg">{guild.name}</h3>
+
         <p className="text-sm text-text-lo mt-1 flex-1 line-clamp-3">
           {guild.description || 'No description yet.'}
         </p>
+
         <div className="mt-4 flex items-center justify-between">
           <span className="text-xs font-mono text-text-lo">
-            {guild.memberCount ?? 0} members
+            {guild.members?.length ?? guild.memberCount ?? 0} members
           </span>
+
           {guild.previewUrl && (
             <a
               href={guild.previewUrl}
