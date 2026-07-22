@@ -1,15 +1,44 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, model, models } from "mongoose";
 
 const GuildSchema = new Schema(
   {
-    name: { type: String, required: true },
-    description: { type: String, default: '' },
-    thumbnailUrl: { type: String, default: null },
-    previewUrl: { type: String, default: null }, // if present, show preview card
-    ownerMoonId: { type: String, default: null },
-    memberCount: { type: Number, default: 0 },
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+
+    ownerId: {
+      type: String,
+      required: true,
+    },
+
+    members: {
+      type: [String],
+      default: [],
+    },
+
+    banned: {
+      type: [String],
+      default: [],
+    },
+
+    description: {
+      type: String,
+      default: "No description has been set.",
+    },
+
+    icon: {
+      type: String,
+      default: null,
+    },
   },
-  { strict: false, collection: 'guilds' }
+  {
+    timestamps: true,
+    strict: false,
+    collection: "guilds",
+  }
 );
 
-export default models.Guild || model('Guild', GuildSchema);
+export default models.Guild || model("Guild", GuildSchema);
