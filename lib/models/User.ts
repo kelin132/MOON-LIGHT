@@ -29,6 +29,8 @@ const UserSchema = new Schema(
     discordId: { type: String },
     role: { type: String, enum: [...STAFF_ROLES, 'Member'], default: 'Member' },
     coins: { type: Number, default: 0 },
+    bank: { type: Number, default: 0 },
+    coins: { type: Number, default: 0 },
     level: { type: Number, default: 1 },
     xp: { type: Number, default: 0 },
     guildId: { type: Schema.Types.ObjectId, ref: 'Guild', default: null },
